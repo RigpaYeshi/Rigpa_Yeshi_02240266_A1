@@ -1,8 +1,9 @@
-def rock_paper_scissore():
+def rock_paper_scissor():
     import random
+    print("Let's begin with the game")
     print("Let's start the rock, paper, scissor game")
     print("Now you can choose any one from the following [rock, paper, scissor]")
-    player =input("Player's your choice is " )
+    player =input("Player your choice is " )
     player = player.lower()
     computer = random.choice(["rock", "paper", "scissor"])
     print(f"Computer choice is {computer}")
@@ -14,6 +15,6 @@ def rock_paper_scissore():
 def is_win(player, opponent):
     if (player == "rock" and opponent == "scissor") or (player == "scissor" and opponent == "paper") or (player == "paper" and opponent == "rock"):
         return True 
-print(rock_paper_scissore())
+print(rock_paper_scissor())
 
 
