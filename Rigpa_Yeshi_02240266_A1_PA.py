@@ -11,11 +11,9 @@ def start():
                 for i in range(2, int(number**0.5) + 1):
                     if number % i == 0:
                         return False
-                return True
-                
+                return True             
             def sum_of_prime(start, end):
                 return sum(number for number in range(start, end + 1) if prime_number(number))
-
             start = int(input("Enter start of range: "))
             end = int(input("Enter end of range: "))
             print("Sum of prime numbers in range:", sum_of_prime(start, end))
@@ -35,37 +33,39 @@ def start():
             print("Number of consonants:", count_consonants(text))
         elif user_choice == 4:
             def min_max_finder():
-                while True:
-                    try:
-                        number = int(input("How many numbers will you enter? : "))
-                        if number <= 0:
-                            print(" Please enter a valid number greater than 0.")
-                            continue  
-                        break
-                    except ValueError:
-                        print(" Invalid input! Please enter a whole number.")
-                numbers = []
-                for i in range(number):
-                    while True:
-                        try:
-                            num = float(input(f"Enter number {i+1}: "))
-                            numbers.append(num)
-                            break
-                        except ValueError:
-                            print("Invalid input! Please enter a numeric value.")
-                return min(numbers), max(numbers)
-            min_val, max_val = min_max_finder()
-            print(f" Min: {min_val}, Max: {max_val}")
+                 while True:
+                      try:
+                           count = int(input("How many numbers will you enter? "))
+                           if count > 0:
+                                break
+                           print("Enter a number greater than 0.")
+                      except ValueError:
+                           print("Invalid input! Enter a whole number.")
+                           numbers = [float(input(f"Enter number {i+1}: ")) for i in range(count)]
+                           return min(numbers), max(numbers)
+                      min_val, max_val = min_max_finder()
+                      print(f"Min: {min_val}, Max: {max_val}")
         elif user_choice == 5:
             def is_palindrome(text):
                 cleaned_text = ''.join(char.lower() for char in text if char.isalnum())
                 return cleaned_text == cleaned_text[::-1] 
-
             text = input("Enter a text string: ")
             print("Palindrome check:", is_palindrome(text))
-        elif  user_choice== 6:
-            
+        elif user_choice == 6:
+            def word_counter(file_path):
+                words_to_count = ["the", "was", "and"]
+                try:
+                    with open(file_path, "r", encoding="utf-8") as file:
+                        text = file.read().lower().split()
+                        return {word: text.count(word) for word in words_to_count}
+                except FileNotFoundError:
+                    print("Error: File not found!")
+            file_path = input("Enter the file path: ")
+            print("Word counts:", word_counter(file_path))
+        elif user_choice == 0:
+            print("Exit program")
+            break
         else:
-            print("Invalid option")
+            print("Invalid option, Please enter a valid option")
 start()
 
